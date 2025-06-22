@@ -1,3 +1,11 @@
 {
-  "format.enable": false
+  "format.enable": false,
+    "diagnostics.globals": [
+        "header_shadow",
+        "header_electronic",
+        "header_elite",
+        "header_edge",
+        "header_isometric",
+        "header_sharp"
+    ]
 }
