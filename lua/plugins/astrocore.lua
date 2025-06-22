@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -44,7 +44,8 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
+        whichwrap = "<,>,h,l", -- sets vim.opt.whichwrap
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -73,6 +74,11 @@ return {
           desc = "Close buffer from tabline",
         },
 
+        -- keymap("v", "<M-Up>", ":m '<-2<CR>gv=gv", opts) -- Move up
+        -- keymap("v", "<M-Down>", ":m '>+1<CR>gv=gv", opts) -- Move down
+        ["<M-Up>"] = { ":m .-2<CR>==", desc = "Move line up" },
+        ["<M-Down>"] = { ":m .+1<CR>==", desc = "Move line down" },
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
@@ -80,6 +86,10 @@ return {
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
       },
+      -- v = {
+      --   ["<M-Up>"] = { ":m '<-2<CR>gv=gv", mode = "v", desc = "Move selection up" },
+      --   ["<M-Down>"] = { ":m '>+1<CR>gv=gv", mode = "v", desc = "Move selection down" },
+      -- }
     },
   },
 }
